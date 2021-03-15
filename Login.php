@@ -1,6 +1,6 @@
 <div id="containersDiv">
 
- 		<?php include ('C:\xampp\htdocs\Newtask\C.Login\header1.php');?>
+ 		<?php include ('header.php');?>
 				
 
 			
@@ -16,7 +16,7 @@
 
 		
 		<?php
-		 include ('C:\xampp\htdocs\Newtask\C.Login\footer.php');
+		 include ('footer.php');
 		?>
 		
 

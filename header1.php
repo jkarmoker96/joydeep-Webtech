@@ -1,33 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-<!-- 
-<style type="text/css">
-	
-	
-	#headerDiv
-	{
-	display: block;
-	width: 800px; 
-	position: absolute; 
-	padding-top:20px; 
-	padding-bottom:20px; 
-	font-size:20px; 
-	border-style: solid;
-    border-width: thin;
-	}
-	#headerBarDiv
-	{
-		display: inline;
-		position: absolute;
-		right: 45px;
-		/*margin-right: auto;*/
-		padding-top:20px; 
-		padding-bottom:25px; 
-	}
-</style> -->
-
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -43,4 +16,3 @@
 		</div> 
 </body>
 </html>
-				

@@ -1,11 +1,11 @@
 <?php 
 
-require_once 'db_connect.php';
+require_once 'database_connection.php';
 
 
-function showAllStudents(){
+function showAllUsers(){
 	$conn = db_conn();
-    $selectQuery = 'SELECT * FROM `user_info` ';
+    $selectQuery = 'SELECT * FROM `profile_details` ';
     try{
         $stmt = $conn->query($selectQuery);
     }catch(PDOException $e){
@@ -15,9 +15,9 @@ function showAllStudents(){
     return $rows;
 }
 
-function showStudent($id){
+function showUser($id){
 	$conn = db_conn();
-	$selectQuery = "SELECT * FROM `user_info` where ID = ?";
+	$selectQuery = "SELECT * FROM `profile_details1` where user_id = ?";
 
     try {
         $stmt = $conn->prepare($selectQuery);
@@ -30,33 +30,19 @@ function showStudent($id){
     return $row;
 }
 
-function searchUser($user_name){
-    $conn = db_conn();
-    $selectQuery = "SELECT * FROM `user_info` WHERE Username LIKE '%$user_name%'";
-
-    
-    try{
-        $stmt = $conn->query($selectQuery);
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $rows;
-}
 
 
-function addStudent($data){
+function addUser($data){
 	$conn = db_conn();
-    $selectQuery = "INSERT into user_info (Name, Surname, Username, Password, image)
-VALUES (:name, :surname, :username, :password, :image)";
+    $selectQuery = "INSERT into profile_details (username, email, gender, password)
+VALUES (:username, :email, :gender, :password)";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
-        	':name' => $data['name'],
-        	':surname' => $data['surname'],
         	':username' => $data['username'],
+        	':email' => $data['email'],
+        	':gender' => $data['gender'],
         	':password' => $data['password'],
-        	':image' => $data['image']
         ]);
     }catch(PDOException $e){
         echo $e->getMessage();
@@ -67,9 +53,9 @@ VALUES (:name, :surname, :username, :password, :image)";
 }
 
 
-function updateStudent($id, $data){
+function updateUser($id, $data){
     $conn = db_conn();
-    $selectQuery = "UPDATE user_info set Name = ?, Surname = ?, Username = ? where ID = ?";
+    $selectQuery = "UPDATE profile_details set Name = ?, Surname = ?, Username = ? where user_id = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
@@ -83,9 +69,9 @@ function updateStudent($id, $data){
     return true;
 }
 
-function deleteStudent($id){
+function deleteUser($id){
 	$conn = db_conn();
-    $selectQuery = "DELETE FROM `user_info` WHERE `ID` = ?";
+    $selectQuery = "DELETE FROM `profile_details` WHERE `user_id` = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([$id]);
